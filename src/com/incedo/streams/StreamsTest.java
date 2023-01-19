@@ -64,7 +64,8 @@ public class StreamsTest {
 	// (b) to know if stream is empty -- in case of reduction operation
 	private static void find(List<Book> books) {
 		System.out.println("\nFinding ...");
-		Optional<Book> result = books.parallelStream().filter((d) -> d.getRating() >= 4.8 && d.getPrice() <= 50.0)
+		Optional<Book> result = books.parallelStream().
+				filter((d) -> d.getRating() >= 4.8 && d.getPrice() <= 50.0)
 				.findAny();
 
 //			System.out.println(result);
