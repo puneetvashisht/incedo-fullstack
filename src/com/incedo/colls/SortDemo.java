@@ -23,8 +23,14 @@ public class SortDemo {
 		
 		System.out.println(employees);
 		
-		Collections.sort(employees, new SalaryComparator());
+//		Collections.sort(employees, new SalaryComparator());
+		Collections.sort(employees, (o1, o2) -> (int)(o1.salary - o2.salary) );
+		
 		System.out.println(employees);
+		
+		
+		Thread t = new Thread(()-> System.out.print("Run by thread: "));
+		t.start();
 	}
 
 }
