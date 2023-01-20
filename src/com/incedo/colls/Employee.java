@@ -2,9 +2,9 @@ package com.incedo.colls;
 
 public class Employee implements Comparable<Employee> {
 	
-	int id;
+	public int id;
 	String name;
-	double salary;
+	public double salary;
 	static final String companyName = "INCEDO";
 	
 	public Employee(int id, String name, double salary) {
