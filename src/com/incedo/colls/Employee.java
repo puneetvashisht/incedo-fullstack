@@ -14,6 +14,11 @@ public class Employee implements Comparable<Employee> {
 		this.salary = salary;
 	}
 
+	public void incrementSalary() throws InterruptedException {
+		Thread.sleep(2000);
+		this.salary *= 1.1;
+		System.out.println("Salary incremented by thread: " + Thread.currentThread().getName());
+	}
 
 //	@Override
 //	 public boolean equals(Object obj) {
