@@ -1,5 +1,6 @@
 package com.incdeo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -32,8 +33,9 @@ public class EmloyeeTest {
 		tx.begin();
 		
 		Employee emp = em.find(Employee.class, id);
+//		System.out.println(emp.getProjects());
 //		
-		em.remove(emp);
+//		em.remove(emp);
 		
 		tx.commit();
 		em.close();
@@ -60,11 +62,26 @@ public class EmloyeeTest {
 	
 	
 	public static void main(String[] args) {
+		
 //		Employee e = new Employee( "Priya", 323232);
+//		
+//		Project p1 = new Project();
+//		p1.setName("Northstar");
+//		
+//		Project p2 = new Project();
+//		p2.setName("Southstar");
+//		
+//		List<Project> projects = new ArrayList<>();
+//		projects.add(p1);
+//		projects.add(p2);
+//		
+//		e.setProjects(projects);
+//		
 //		new EmloyeeTest().addEmployee(e);
 		
-		List<Employee> e = new EmloyeeTest().findEmployeeGreaterThanSalary(20000);
+//		List<Employee> e = new EmloyeeTest().findEmployeeGreaterThanSalary(20000);
 		
+		Employee e = new EmloyeeTest().findEmployee(1);
 		System.out.println(e);
 //		
 	}

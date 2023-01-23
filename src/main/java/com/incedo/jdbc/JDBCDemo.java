@@ -27,10 +27,10 @@ public class JDBCDemo {
 			System.out.println("Inserted records: "+ records);
 			
 //			4. Get result
-//			ResultSet rs = stmt.executeQuery("SELECT * FROM employees;");
-//			while (rs.next())
-//				System.out.println(rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3));
-//			
+			ResultSet rs = stmt.executeQuery("SELECT * FROM employees;");
+			while (rs.next())
+				System.out.println(rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3));
+			
 //			5. Close connection
 			con.close();
 		} catch (Exception e) {

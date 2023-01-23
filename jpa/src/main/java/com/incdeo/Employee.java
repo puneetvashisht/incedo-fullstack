@@ -1,10 +1,15 @@
 package com.incdeo;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
 @NamedQuery(name="findSalaryGreaterThan", query="select e from Employee e where e.salary > :sal")
@@ -15,6 +20,9 @@ public class Employee {
 	int id;
 	String name;
 	double salary;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	List<Project> projects;
 	
 	public Employee() {
 		
@@ -44,10 +52,23 @@ public class Employee {
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
+	
+	
+	
+	public List<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
+	}
+
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + "]";
+		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + ", projects=" + projects + "]";
 	}
+
+	
 	
 	
 
