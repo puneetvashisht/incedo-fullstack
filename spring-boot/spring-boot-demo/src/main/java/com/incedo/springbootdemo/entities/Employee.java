@@ -12,6 +12,10 @@ public class Employee {
 	int id;
 	String name;
 	double salary;
+	
+//	@ManyToOne
+//	Category category
+//	
 	public Employee() {
 		
 	}
