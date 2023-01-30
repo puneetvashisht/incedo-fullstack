@@ -1,0 +1,17 @@
+<html>
+<head>
+    <title>Clock</title>
+</head>
+<body>
+    <h2>Time : <span id="clock"></span></h2>
+   
+    <script>
+        setInterval(()=>{
+            var today = new Date();
+            var timeStr = `${today.getHours()} : ${today.getMinutes()} : ${today.getSeconds()}`
+            document.getElementById('clock').innerText = timeStr
+        }, 1000)
+        
+    </script>
+</body>
+</html>

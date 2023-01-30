@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Test Page</title>
+    <style>
+        .message {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <h2 id="message" class="message">Test content</h2>
+    <button onclick="reverse()">Reverse</button>
+    <script>
+function reverse(){
+    var str = document.getElementById('message').innerText
+document.getElementById('message').innerText = str.split('').reverse().join('')
+}
+
+    </script>
+</body>
+</html>

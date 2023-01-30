@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>Test Page</title>
+    <style>
+        .message {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <h2 id="message" class="message">Test content</h2>
+    <button onclick="reverse()">Reverse</button>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script>
+function reverse(){
+//     var str = document.getElementById('message').innerText
+// document.getElementById('message').innerText = str.split('').reverse().join('')
+    var str = $('#message').text()
+    $('#message').text(str.split('').reverse().join(''))
+}
+
+    </script>
+</body>
+</html>
