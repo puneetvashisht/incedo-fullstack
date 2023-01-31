@@ -1,14 +1,18 @@
-function Badge(){
+import { useState } from "react";
+
+function Badge(props){
+
+    const [count, setCount] = useState(0);
 
     const handleClick = () => {
         console.log('click event..');
-
+        setCount(count+1);
         //logic
     }
 
     return (
         <button onClick={handleClick} type="button" className="btn btn-primary">
-            Notifications <span className="badge text-bg-secondary">4</span>
+            {props.caption} <span className="badge text-bg-secondary">{count}</span>
         </button>
     )
 }

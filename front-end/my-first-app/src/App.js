@@ -4,6 +4,8 @@ import Message from './Message';
 import Badge from './Badge';
 import Clock from './Clock';
 import Card from './Card';
+import BadgeWithClass from './BadgeWithClass';
+import ViewEmployees from './ViewEmployees';
 
 function App() {
 
@@ -18,16 +20,20 @@ function App() {
   })
 
   return (
-    <div className="container">
-      <div className="row">
-      {listCourses}
-      </div>
-     {/* <h2>Welcome to React!</h2>
+
+    <ViewEmployees></ViewEmployees>
+    
+    // <BadgeWithClass caption="Votes"></BadgeWithClass>
+    // <div className="container">
+    //   <div className="row">
+    //   {listCourses}
+    //   </div>
+     /* <h2>Welcome to React!</h2>
      <Message></Message>
      <Badge></Badge>
-     <Clock today={new Date()}></Clock> */}
+     <Clock today={new Date()}></Clock> */
     
-    </div>
+    // </div>
   );
 }
 
