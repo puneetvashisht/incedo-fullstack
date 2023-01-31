@@ -13,7 +13,7 @@ export default function AddEmployee() {
 
     const addEmployee = () => {
         console.log('add employee..' , name, salary)
-        fetch('http://localhost:8000/employees', {
+        fetch('http://localhost:8080/employees', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'

@@ -24,10 +24,10 @@ function App() {
   return (
 
     <>
-    <Dropdown></Dropdown>
-    {/* <AddEmployee></AddEmployee>
+    {/* <Dropdown></Dropdown> */}
+     <AddEmployee></AddEmployee>
     <hr/>
-     <ViewEmployees></ViewEmployees> */}
+     <ViewEmployees></ViewEmployees>
     </>
    
     

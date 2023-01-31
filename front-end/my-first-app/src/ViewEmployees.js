@@ -14,7 +14,7 @@ export default function ViewEmployees() {
  useEffect(() => {
    //http call
    console.log('initialize....')
-    fetch('http://localhost:8000/employees/')
+    fetch('http://localhost:8080/employees/')
     .then(res=>res.json())
     .then(data=>{
         setEmployees(data)
