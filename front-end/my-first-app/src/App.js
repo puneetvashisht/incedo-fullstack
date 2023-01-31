@@ -7,6 +7,7 @@ import Card from './Card';
 import BadgeWithClass from './BadgeWithClass';
 import ViewEmployees from './ViewEmployees';
 import AddEmployee from './AddEmployee';
+import Dropdown from './Dropdown';
 
 function App() {
 
@@ -23,9 +24,10 @@ function App() {
   return (
 
     <>
-    <AddEmployee></AddEmployee>
+    <Dropdown></Dropdown>
+    {/* <AddEmployee></AddEmployee>
     <hr/>
-     <ViewEmployees></ViewEmployees>
+     <ViewEmployees></ViewEmployees> */}
     </>
    
     
