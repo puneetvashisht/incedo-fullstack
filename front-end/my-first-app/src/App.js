@@ -6,6 +6,7 @@ import Clock from './Clock';
 import Card from './Card';
 import BadgeWithClass from './BadgeWithClass';
 import ViewEmployees from './ViewEmployees';
+import AddEmployee from './AddEmployee';
 
 function App() {
 
@@ -21,7 +22,12 @@ function App() {
 
   return (
 
-    <ViewEmployees></ViewEmployees>
+    <>
+    <AddEmployee></AddEmployee>
+    <hr/>
+     <ViewEmployees></ViewEmployees>
+    </>
+   
     
     // <BadgeWithClass caption="Votes"></BadgeWithClass>
     // <div className="container">

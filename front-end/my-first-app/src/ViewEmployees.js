@@ -13,6 +13,7 @@ export default function ViewEmployees() {
 // substitue for componentDidMount
  useEffect(() => {
    //http call
+   console.log('initialize....')
     fetch('http://localhost:8000/employees/')
     .then(res=>res.json())
     .then(data=>{
@@ -21,13 +22,25 @@ export default function ViewEmployees() {
  }, [])
  
 
+ const deleteEmployee = (id)=>{
+    fetch('http://localhost:8000/employees/' + id, {
+        method: 'DELETE'
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        // setEmployees(data)
+        let newEmployeeList = employees.filter((e) => e.id!= id);
+        setEmployees(newEmployeeList)
+    })
+ }
+
   const listEmployees = employees.map((employee, i)=> {
     return (
         <tr key={employee.id}>
         <th scope="row">{i+1}</th>
         <td>{employee.name}</td>
         <td>{employee.salary}</td>
-        <td>@mdo</td>
+        <td><button onClick={()=>deleteEmployee(employee.id)} className='btn btn-danger'>X</button></td>
         </tr>
     )
   })
