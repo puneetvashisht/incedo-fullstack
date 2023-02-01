@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function ViewEmployees() {
 
@@ -39,7 +40,7 @@ export default function ViewEmployees() {
     return (
         <tr key={employee.id}>
         <th scope="row">{i+1}</th>
-        <td>{employee.name}</td>
+        <td><Link to={'/update/' + employee.id}>{employee.name}</Link></td>
         <td>{employee.salary}</td>
         <td><button onClick={()=>deleteEmployee(employee.id)} className='btn btn-danger'>X</button></td>
         </tr>

@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import ViewEmployees from './components/ViewEmployees';
 import AddEmployee from './components/AddEmployee';
+import UpdateEmployee from './components/UpdateEmployee';
 
 const router = createBrowserRouter([
 {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       path: "add",
       element: <AddEmployee />,
     },
+    {
+      path: "update/:id",
+      element: <UpdateEmployee />,
+    }
   ]
 }
 ]);
