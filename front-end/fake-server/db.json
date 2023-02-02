@@ -1,4 +1,7 @@
 {
+  "auth": {
+    "auth" :true
+  },
   "employees": [
     {
       "name": "Sohini",
