@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux'
 
 import classes from './Navigation.module.css';
 
@@ -18,7 +19,7 @@ const Navigation = (props) => {
         )}
         {props.isLoggedIn && (
           <li>
-            <button onClick={props.onLogout}>Logout</button>
+            <button onClick={()=>props.onLogout()}>Logout</button>
           </li>
         )}
       </ul>
@@ -27,4 +28,18 @@ const Navigation = (props) => {
 };
 
 // connect with dispatch & state
-export default Navigation;
+// export default Navigation;
+const mapStateToProps = (state)=>{
+  console.log(state);
+  return {
+    isLoggedIn: state.isLoggedIn
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLogout: () => dispatch({type: 'LOGOUT'})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

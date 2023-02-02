@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
+import {connect} from 'react-redux'
 
 const Login = (props) => {
   const [enteredEmail, setEnteredEmail] = useState('');
@@ -36,9 +37,10 @@ const Login = (props) => {
   };
 
   const submitHandler = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     // props.onLogin(enteredEmail, enteredPassword);
     // dispatch action 'LOGIN'
+    props.onLogin();
   };
 
   return (
@@ -82,6 +84,11 @@ const Login = (props) => {
   );
 };
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLogin: () => dispatch({type: 'LOGIN'})
+  }
+}
 
 // connect and get dispatch
-export default Login;
+export default connect(null, mapDispatchToProps)(Login);

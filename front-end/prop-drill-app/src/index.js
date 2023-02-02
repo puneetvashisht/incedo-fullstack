@@ -4,9 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {createStore} from 'redux'
+import {Provider} from 'react-redux'
 
 const initialState = {
-  isLoggedIn: false
+  isLoggedIn: true
 }
 // create reducers to modify the state --- immutable
 const reducer = (state = initialState, action)=> {

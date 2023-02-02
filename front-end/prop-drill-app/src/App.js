@@ -1,28 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Login from './components/Login/Login';
 import Home from './components/Home/Home';
 import MainHeader from './components/MainHeader/MainHeader';
+import {connect} from 'react-redux'
 
-function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const App=(props)=> {
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const loginHandler = (email, password) => {
-    // We should of course check email and password
-    // But it's just a dummy/ demo anyways
-    setIsLoggedIn(true);
-  };
+  // const loginHandler = (email, password) => {
+  //   // We should of course check email and password
+  //   // But it's just a dummy/ demo anyways
+  //   setIsLoggedIn(true);
+  // };
 
-  const logoutHandler = () => {
-    setIsLoggedIn(false);
-  };
+  // const logoutHandler = () => {
+  //   setIsLoggedIn(false);
+  // };
 
   return (
     <React.Fragment>
-      <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
+      <MainHeader />
       <main>
-        {!isLoggedIn && <Login onLogin={loginHandler} />}
-        {isLoggedIn && <Home onLogout={logoutHandler} />}
+        {!props.isLoggedIn && <Login  />}
+        {props.isLoggedIn && <Home />}
       </main>
     </React.Fragment>
   );
@@ -30,4 +31,11 @@ function App() {
 
 // todo: use connect to getState and remove local state 
 
-export default App;
+const mapStateToProps = (state)=>{
+  console.log(state);
+  return {
+    isLoggedIn: state.isLoggedIn
+  }
+}
+
+export default connect(mapStateToProps)(App);
