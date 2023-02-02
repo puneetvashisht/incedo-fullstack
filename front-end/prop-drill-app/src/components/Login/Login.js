@@ -37,7 +37,8 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(enteredEmail, enteredPassword);
+    // props.onLogin(enteredEmail, enteredPassword);
+    // dispatch action 'LOGIN'
   };
 
   return (
@@ -81,4 +82,6 @@ const Login = (props) => {
   );
 };
 
+
+// connect and get dispatch
 export default Login;

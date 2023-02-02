@@ -26,4 +26,5 @@ const Navigation = (props) => {
   );
 };
 
+// connect with dispatch & state
 export default Navigation;

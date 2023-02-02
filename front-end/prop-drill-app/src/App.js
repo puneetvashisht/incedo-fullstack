@@ -28,4 +28,6 @@ function App() {
   );
 }
 
+// todo: use connect to getState and remove local state 
+
 export default App;
