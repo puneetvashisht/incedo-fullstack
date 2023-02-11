@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import * as actions from '../store/employee-actions'
 
 const AddEmployee  = (props) => {
 
@@ -46,7 +47,7 @@ const AddEmployee  = (props) => {
 
 const mapDispatchToProps = (dispatch)=> {
     return {
-      onAddEmployees: (employee) => dispatch({type: 'ADD_EMPLOYEES', payload: employee})
+      onAddEmployees: (employee) => dispatch(actions.addEmployee(employee))
     }
   }
   

@@ -1,9 +1,13 @@
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import * as actions from '../store/employee-actions'
 
 const ViewEmployees= (props) => {
 
+  useEffect(()=>{
+    props.onFetchEmployees();
+  },[])
 
 
  const deleteEmployee = (id)=>{
@@ -49,7 +53,8 @@ const mapStateToProps = (state)=> {
 
 const mapDispatchToProps = (dispatch)=> {
   return {
-    onDeleteEmployees: (id) => dispatch({type: 'DELETE_EMPLOYEE', payload: {id}})
+    onDeleteEmployees: (id) => dispatch(actions.deleteEmployee(id)),
+    onFetchEmployees: ()=>dispatch(actions.fetchEmployees())
   }
 }
 

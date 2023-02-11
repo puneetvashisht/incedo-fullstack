@@ -35,6 +35,7 @@ public class StreamsDemo {
 		
 		OptionalDouble maxSalary = employees.stream()
 		.filter(e-> e.name.startsWith("R"))
+//		.map(e -> e.address)
 		.mapToDouble((e)-> e.salary)
 		.max();
 		

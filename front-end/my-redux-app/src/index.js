@@ -4,33 +4,22 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
+import reducer from './store/employee-reducer';
+import thunk from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 
-const initialState = {
-  employees: [
-      {id: 1, name: "Ravi", salary: 34343},
-      {id: 2, name: "Priya", salary: 44343},
-  ]
-}
-// create reducers to modify the state --- immutable
-const reducer = (state = initialState, action)=> {
-  switch (action.type) {
-      case 'ADD_EMPLOYEES':
-          //  state.employees.push(action.payload)
-          let newEmployees = [...state.employees, action.payload]
-          return {employees: newEmployees}
-      case 'DELETE_EMPLOYEE':
-              let remainingEmployees = state.employees.filter((e)=>e.id!=action.payload.id)
-              return {employees: remainingEmployees}
-      default:
-          return {employees: state.employees};
-  }
+const logger = store => next => action => {
+  console.log('dispatching', action)
+  let result = next(action)
+  console.log('next state', store.getState())
+  return result
 }
 
 // create store (all the state)
-const store = createStore(reducer)
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(logger,thunk)))
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

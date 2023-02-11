@@ -1,6 +1,6 @@
 {
   "auth": {
-    "auth" :true
+    "auth": true
   },
   "employees": [
     {
@@ -29,14 +29,9 @@
       "id": 6
     },
     {
-      "name": "test spa",
-      "salary": "33343",
-      "id": 7
-    },
-    {
-      "name": "test",
-      "salary": "343333",
-      "id": 8
+      "id": 45,
+      "name": "newtest",
+      "salary": "5555"
     }
   ]
 }
