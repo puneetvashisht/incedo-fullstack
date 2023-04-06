@@ -19,18 +19,22 @@ public class SortDemo {
 		System.out.println(e1.companyName);
 		System.out.println(Employee.companyName);
 		
-		Collections.sort(employees);
+//		Collections.sort(employees);
 		
-		System.out.println(employees);
+		employees.stream()
+		.sorted((o1, o2) -> (int)(o1.salary - o2.salary))
+		.forEach((e)-> System.out.println(e));
 		
-//		Collections.sort(employees, new SalaryComparator());
-		Collections.sort(employees, (o1, o2) -> (int)(o1.salary - o2.salary) );
+//		System.out.println(employees);
 		
-		System.out.println(employees);
-		
-		
-		Thread t = new Thread(()-> System.out.print("Run by thread: "));
-		t.start();
+////		Collections.sort(employees, new SalaryComparator());
+//		Collections.sort(employees, (o1, o2) -> (int)(o1.salary - o2.salary) );
+//		
+//		System.out.println(employees);
+//		
+//		
+//		Thread t = new Thread(()-> System.out.print("Run by thread: "));
+//		t.start();
 	}
 
 }

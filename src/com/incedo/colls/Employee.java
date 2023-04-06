@@ -1,6 +1,6 @@
 package com.incedo.colls;
 
-public class Employee implements Comparable<Employee> {
+public class Employee{
 	
 	public int id;
 	String name;
@@ -57,10 +57,10 @@ public class Employee implements Comparable<Employee> {
 	}
 
 
-	@Override
-	public int compareTo(Employee o) {
-		return this.id - o.id;
-	}
+//	@Override
+//	public int compareTo(Employee o) {
+//		return this.id - o.id;
+//	}
 	
 	
 

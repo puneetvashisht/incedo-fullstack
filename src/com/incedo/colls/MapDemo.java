@@ -1,8 +1,8 @@
 package com.incedo.colls;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
 
 public class MapDemo {
 	
@@ -12,11 +12,13 @@ public class MapDemo {
 		Employee e2 =new Employee(2, "Priya", 45454);
 		Employee e3 =new Employee(12, "Rahul", 25454);
 		
-		Map<Integer, Employee> employeeMap = new TreeMap<>();
+		Map<Integer, Employee> employeeMap = new HashMap<>();
 		employeeMap.put(11, e1);
 		employeeMap.put(2, e2);
 		employeeMap.put(12, e3);
 //		employeeMap.put(null, e4);
+		
+		System.out.println(employeeMap.get(2));
 		
 		
 		

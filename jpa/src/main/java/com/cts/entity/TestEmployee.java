@@ -7,13 +7,18 @@ import javax.persistence.Persistence;
 
 public class TestEmployee {
 	
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("01hibernatebasic");
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("jbd-pu");
 //    EntityManager em = emf.createEntityManager()
 	
 	void addEmployee(Employee emp){
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
+		
+		if(emp.id > 0) {
+			tx.rollback();
+		}
+		
 		em.persist(emp);
 		tx.commit();
 		em.close();

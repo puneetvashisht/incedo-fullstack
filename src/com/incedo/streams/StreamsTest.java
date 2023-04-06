@@ -24,6 +24,21 @@ public class StreamsTest {
 
 	// Print at most 5 DISTINCT books with rating >= 4.5
 	// DB world: select distinct (ISBN) from book where rating >= 4.5 limit 0, 5;
+	
+	public static void test(List<Book> books) {
+		Optional<Book> bookFound = books.stream()
+		.filter(b -> b.getSource().equals("B&N") && b.getRating() > 4.0)
+		.max((b1,b2) -> (int)(b1.getPrice() - b2.getPrice()));
+		
+		if(bookFound.isPresent()) {
+			System.out.println(bookFound.get());
+		}
+//		.forEach(System.out::println);
+//		.collect(Collectors.toList());
+		
+//		System.out.println(result);
+	}
+	
 	private static void slice(List<Book> books) {
 		System.out.println("\nSlice ... ");
 
@@ -31,7 +46,7 @@ public class StreamsTest {
 				// Intermediate operations returning a stream
 				.filter((d -> d.getRating() >= 4.5))
 				.distinct()
-				.limit(5)
+				.limit(10)
 				.map(d -> d.getTitle())
 
 				// Terminal operations
@@ -178,6 +193,8 @@ public class StreamsTest {
 
 		books.addAll(DataExtractor.getFromAmazon("java"));
 		books.addAll(DataExtractor.getFromBarnesAndNoble("java"));
+		
+		test(books);
 
 	}
 

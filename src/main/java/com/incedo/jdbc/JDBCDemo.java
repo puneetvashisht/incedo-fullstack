@@ -1,9 +1,9 @@
-package com.incedo.jdbc;
+package main.java.com.incedo.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class JDBCDemo {
 
@@ -17,14 +17,14 @@ public class JDBCDemo {
 			
 			
 			// 3. Fire statement
-//			Statement stmt = con.createStatement();
-			PreparedStatement stmt = con.prepareStatement("insert into employees values(?,?,?)");
-			stmt.setInt(1, 35);
-			stmt.setString(2, "Abcd");
-			stmt.setDouble(3, 34343.34);
-			
-			int records = stmt.executeUpdate();
-			System.out.println("Inserted records: "+ records);
+			Statement stmt = con.createStatement();
+//			PreparedStatement stmt = con.prepareStatement("insert into employees values(?,?,?)");
+//			stmt.setInt(1, 47);
+//			stmt.setString(2, "Jignesh");
+//			stmt.setDouble(3, 44444.44);
+//			
+//			int records = stmt.executeUpdate();
+//			System.out.println("Inserted records: "+ records);
 			
 //			4. Get result
 			ResultSet rs = stmt.executeQuery("SELECT * FROM employees;");
