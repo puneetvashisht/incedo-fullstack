@@ -4,10 +4,13 @@ public class MountainBicycle extends Bicycle{
 	
 	int gears;
 	
-	
+	public MountainBicycle() {
+		super();
+	}
 
 	public MountainBicycle(int speed, int gears) {
-		super(speed);
+//		super(speed);
+		this();
 		this.gears = gears;
 	}
 
@@ -21,6 +24,12 @@ public class MountainBicycle extends Bicycle{
 	@Override
 	public String toString() {
 		return "MountainBicycle [gears=" + gears + ", speed=" + speed + "]";
+	}
+
+	@Override
+	public void test() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

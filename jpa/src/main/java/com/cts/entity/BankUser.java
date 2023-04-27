@@ -20,6 +20,7 @@ public class BankUser implements Serializable {
 
 	@Id
 	CompositeKey id;
+
 	
 	String username;
 	

@@ -3,7 +3,7 @@ package com.cts.entity.inherit;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity
+//@Entity
 @Table(name="RegularEmployee_ID_JND")
 //@DiscriminatorValue(value="2")
 public class RegularEmployee extends Employee {

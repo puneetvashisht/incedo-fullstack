@@ -5,6 +5,8 @@ public abstract class Bicycle implements IBicycle{
 	protected int speed;
 	
 	
+	public abstract void test();
+	
 	
 	public Bicycle() {
 		super();

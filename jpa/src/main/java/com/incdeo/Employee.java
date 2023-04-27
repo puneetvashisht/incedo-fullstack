@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
-@Entity
+//@Entity
 
 @NamedQuery(name="findSalaryGreaterThan", query="select e from Employee e where e.salary > :sal")
 public class Employee {
@@ -22,7 +22,7 @@ public class Employee {
 	String name;
 	double salary;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	List<Project> projects;
 	
 	public Employee() {

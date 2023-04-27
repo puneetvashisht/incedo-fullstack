@@ -14,7 +14,7 @@ public class TestEmployee {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		
+//		
 		if(emp.id > 0) {
 			tx.rollback();
 		}
@@ -39,9 +39,11 @@ public class TestEmployee {
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		Employee emp = em.find(Employee.class, id);
-		emp.name = "Sonia";
+		
 		tx.commit();
 		em.close();
+		
+		emp.name = "Priya";
 	}
 	
 	Employee fetchEmployee(int id){
@@ -53,10 +55,14 @@ public class TestEmployee {
 
 	public static void main(String[] args) {
 		Employee emp1 = new Employee("Priya", 33434.34);
+//		emp1.id = 34;
 		TestEmployee testEmployee = new TestEmployee();
 //		testEmployee.addEmployee(emp1);
-		Employee fetchedEmployee = testEmployee.fetchEmployee(2);
-		System.out.println(fetchedEmployee);
+		
+		testEmployee.updateEmployee(40);
+		
+//		Employee fetchedEmployee = testEmployee.fetchEmployee(2);
+//		System.out.println(fetchedEmployee);
 
 	}
 

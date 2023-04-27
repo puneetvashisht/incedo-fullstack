@@ -18,6 +18,7 @@ public class CompositeKey implements Serializable{
 	int bankId;
 
 	int userId;
+	
 	public int getBankId() {
 		return bankId;
 	}

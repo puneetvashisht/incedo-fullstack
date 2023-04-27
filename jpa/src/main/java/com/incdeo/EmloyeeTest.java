@@ -33,7 +33,7 @@ public class EmloyeeTest {
 		tx.begin();
 		
 		Employee emp = em.find(Employee.class, id);
-//		System.out.println(emp.getProjects());
+		System.out.println(emp.getProjects());
 //		
 //		em.remove(emp);
 		

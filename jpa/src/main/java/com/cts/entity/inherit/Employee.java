@@ -8,8 +8,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
-//@Entity
-@Table(name="Employee_ID_JND")
+@Entity
+//@Table(name="Employee_ID_JND")
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 //@DiscriminatorValue(value="1")
 public class Employee {
