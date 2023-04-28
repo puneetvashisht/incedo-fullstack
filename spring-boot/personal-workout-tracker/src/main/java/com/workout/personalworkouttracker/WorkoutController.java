@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.workout.personalworkouttracker.entities.Category;
+import com.workout.personalworkouttracker.entities.CategoryRepository;
 import com.workout.personalworkouttracker.entities.Workout;
 import com.workout.personalworkouttracker.entities.WorkoutRepository;
 
@@ -24,8 +26,22 @@ public class WorkoutController {
 	@Autowired
 	WorkoutRepository workoutRepository;
 	
+	@Autowired
+	CategoryRepository categoryRepository;
+	
 	@PostMapping("/")
 	public ResponseEntity<Void> add(@RequestBody Workout workout) {
+		
+		
+		// If category already exists, use the same
+		Category category = categoryRepository.findByTitle(workout.getCategory().getTitle());
+		
+		System.out.println(category);
+		
+		if(category != null) {
+			workout.setCategory(category);
+		}
+		
 		workoutRepository.save(workout);
 		ResponseEntity re = new ResponseEntity<>(HttpStatus.CREATED);
 		return re;
@@ -34,6 +50,20 @@ public class WorkoutController {
 	@GetMapping("/")
 	public List<Workout> fetchAllWorkouts(){
 		return workoutRepository.findAll();
+	}
+	
+	@GetMapping("/findbytitle/{title}")
+	public Workout fetchAllWorkouts(@PathVariable("title") String title){
+		return workoutRepository.findByTitle(title);
+	}
+	@GetMapping("/findcbpmgt/{cbpm}")
+	public List<Workout> fetchAllWorkouts(@PathVariable("cbpm") int cbpm){
+		return workoutRepository.findByCbpmGreaterThan(cbpm);
+	}
+	
+	@GetMapping("/totalCalories")
+	public Integer fetchTotalCalories(){
+		return workoutRepository.findSumofCalories();
 	}
 	
 	@PatchMapping("/")
