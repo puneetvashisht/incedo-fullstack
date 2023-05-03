@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const employeeSchema = new mongoose.Schema({
+    // _id: mongoose.ObjectId,
     name: String,
     salary: {
         type: Number,
