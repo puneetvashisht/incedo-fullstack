@@ -1,14 +1,13 @@
+import { Outlet } from 'react-router-dom';
 import './App.css';
-import AddWorkout from './components/AddWorkout';
-import ViewWorkouts from './components/ViewWorkouts';
+import Header from './components/Header';
 
 function App() {
   return (
     <div>
-      <AddWorkout></AddWorkout>
-      <hr/>
-      <ViewWorkouts></ViewWorkouts>
-     
+      <Header></Header>
+      <Outlet/>
+
     </div>
   );
 }

@@ -17,13 +17,21 @@ import AddWorkout from './components/AddWorkout';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <ViewWorkouts/>
-  },
-  {
-    path: "add",
-    element: <AddWorkout/>
-  },
-]);
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element:<ViewWorkouts/>,
+      },
+      {
+        path: "add",
+        element: <AddWorkout/>,
+      }
+    ]
+  }
+  ]);
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
