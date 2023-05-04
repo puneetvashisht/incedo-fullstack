@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import ViewWorkouts from './components/ViewWorkouts';
 import AddWorkout from './components/AddWorkout';
+import WorkoutDetail from './components/WorkoutDetail';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "add",
         element: <AddWorkout/>,
+      },
+      {
+        path: "edit/:id",
+        element: <WorkoutDetail/>,
       }
     ]
   }

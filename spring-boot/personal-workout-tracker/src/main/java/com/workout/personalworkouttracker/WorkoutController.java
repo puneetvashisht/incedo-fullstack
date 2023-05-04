@@ -1,6 +1,7 @@
 package com.workout.personalworkouttracker;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -52,6 +53,15 @@ public class WorkoutController {
 	@GetMapping("/")
 	public List<Workout> fetchAllWorkouts(){
 		return workoutRepository.findAll();
+	}
+	
+	@GetMapping("/{id}")
+	public Workout fetchWorkoutByID(@PathVariable("id") int id){
+		 Optional<Workout> workoutFound = workoutRepository.findById(id);
+		 if(workoutFound.isPresent()) {
+			 return workoutFound.get();
+		 }
+		 return null;
 	}
 	
 	@GetMapping("/findbytitle/{title}")

@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
 
+import Autohide from './Autohide';
+import { Link } from 'react-router-dom';
+
 
 const ViewWorkouts = () => {
 
     // For state initialization use useState hook
     const [workouts, setWorkouts] = useState([]);
+    const [showStatus, setShowStatus]= useState(false);
 
     // For component mounting use.. useEffect hook
     useEffect(() => {
@@ -21,7 +25,9 @@ const ViewWorkouts = () => {
         fetch('http://localhost:8080/workouts/' + id,{
             method: 'DELETE'
         })
-        .then(res => console.log(res.status))
+        .then(res => {
+            setShowStatus(true);
+        })
         
     }
 
@@ -29,6 +35,10 @@ const ViewWorkouts = () => {
         <div className="container">
 
             <div className="row">
+
+
+                {showStatus && <Autohide message="Workout is deleted"></Autohide>}
+
                 <table className="table">
                     <thead>
                         <tr>
@@ -44,7 +54,7 @@ const ViewWorkouts = () => {
                             workouts.map((workout, i) => {
                                 return (<tr key={i}>
                                     <th scope="row">{i + 1}</th>
-                                    <td>{workout.title}</td>
+                                    <td><Link to={'/edit/' + workout.id}>{workout.title}</Link></td>
                                     <td>{workout.category?.title}</td>
                                     <td>{workout.cbpm}</td>
                                     <td><button onClick={()=>deleteWorkout(workout.id)} className='btn btn-danger'>X</button></td>
@@ -54,6 +64,8 @@ const ViewWorkouts = () => {
                     </tbody>
                 </table>
             </div>
+
+            
         </div>
     )
 

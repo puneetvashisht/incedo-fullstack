@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
+import Autohide from './Autohide';
 
 export default function AddWorkout() {
 
     const [title, setTitle] = useState('')
     const [cbpm, setCbpm] = useState()
+    const [showStatus, setShowStatus]= useState(false);
+
 
     const addWorkout = () => {
         console.log({title, cbpm});
@@ -16,10 +19,16 @@ export default function AddWorkout() {
             },
             body: JSON.stringify({title, cbpm, category: {title: "Cardio"}})
         })
+        .then(res=> {
+            if(res.status === 201){
+                setShowStatus(true);
+            }
+        })
     }
 
     return (
         <>
+        {showStatus && <Autohide message="Workout is added!"></Autohide>}
             <div className="input-group mb-3">
                 <span className="input-group-text" id="basic-addon1">Title</span>
                 <input type="text" onChange={(e)=> setTitle(e.target.value)} value={title} className="form-control" placeholder="Enter Title" aria-label="Username" aria-describedby="basic-addon1" />
