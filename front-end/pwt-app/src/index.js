@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -14,6 +16,11 @@ import {
 import ViewWorkouts from './components/ViewWorkouts';
 import AddWorkout from './components/AddWorkout';
 import WorkoutDetail from './components/WorkoutDetail';
+import reducer from './store/workout-reducer'
+import { applyMiddleware, createStore } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 const router = createBrowserRouter([
   {
@@ -37,10 +44,22 @@ const router = createBrowserRouter([
   ]);
 
 
+  const logger = store => next => action => {
+    console.log('dispatching', action)
+    let result = next(action)
+    console.log('next state', store.getState())
+    return result
+  }
+  
+  // create store (all the state)
+  const store = createStore(reducer, composeWithDevTools(applyMiddleware(logger,thunk)))
+  
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <RouterProvider router={router} />
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

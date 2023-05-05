@@ -2,33 +2,39 @@ import React, { useEffect, useState } from 'react'
 
 import Autohide from './Autohide';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import * as actions from '../store/workout-actions'
 
 
-const ViewWorkouts = () => {
+
+const ViewWorkouts = (props) => {
 
     // For state initialization use useState hook
-    const [workouts, setWorkouts] = useState([]);
+    // const [workouts, setWorkouts] = useState([]);
     const [showStatus, setShowStatus]= useState(false);
 
     // For component mounting use.. useEffect hook
     useEffect(() => {
-        console.log('Called up after component is mounted and running');
-        fetch('http://localhost:8080/workouts/')
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setWorkouts(data);
-            })
+        // console.log('Called up after component is mounted and running');
+        // fetch('http://localhost:8080/workouts/')
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data);
+        //         setWorkouts(data);
+        //     })
+        props.onFetchWorkouts();
     }, [])
 
     const deleteWorkout = (id) =>{
-        fetch('http://localhost:8080/workouts/' + id,{
-            method: 'DELETE'
-        })
-        .then(res => {
-            setShowStatus(true);
-        })
-        
+        // fetch('http://localhost:8080/workouts/' + id,{
+        //     method: 'DELETE'
+        // })
+        // .then(res => {
+        //     setShowStatus(true);
+        // })
+        props.onDeleteWorkouts(id);
+        setShowStatus(true);
     }
 
     return (
@@ -51,7 +57,7 @@ const ViewWorkouts = () => {
                     </thead>
                     <tbody>
                         {
-                            workouts.map((workout, i) => {
+                            props.workouts.map((workout, i) => {
                                 return (<tr key={i}>
                                     <th scope="row">{i + 1}</th>
                                     <td><Link to={'/edit/' + workout.id}>{workout.title}</Link></td>
@@ -70,4 +76,21 @@ const ViewWorkouts = () => {
     )
 
 }
-export default ViewWorkouts;
+
+const mapStateToProps = (state)=> {
+    console.log(state)
+    return {
+      workouts: state.workouts
+    }
+  }
+  
+  const mapDispatchToProps = (dispatch)=> {
+    return {
+      onDeleteWorkouts: (id) => dispatch(actions.deleteWorkout(id)),
+      onFetchWorkouts: ()=>dispatch(actions.fetchWorkouts())
+    }
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(ViewWorkouts)
+
+// export default ViewWorkouts;

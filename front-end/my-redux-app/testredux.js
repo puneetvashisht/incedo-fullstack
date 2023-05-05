@@ -25,7 +25,7 @@ const store = redux.createStore(reducer)
 
 store.subscribe(()=> console.log(store.getState()))
 // dispatch action
-// const deleteAction = {type: 'DELETE_EMPLOYEE', payload: {id: 2}}
-const fetchAction = {type:'FETCH_EMPLOYEES'}
-store.dispatch(fetchAction)
+const deleteAction = {type: 'DELETE_EMPLOYEE', payload: {id: 2}}
+// const fetchAction = {type:'FETCH_EMPLOYEES'}
+store.dispatch(deleteAction)
 // store.dispatch({type: 'ADD_EMPLOYEES', payload: {id: 3, name: "Harshit", salary: 22222}})
