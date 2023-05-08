@@ -3,7 +3,10 @@ import { useParams } from 'react-router-dom';
 import Autohide from './Autohide';
 import { Button } from 'react-bootstrap';
 
-export default function WorkoutDetail() {
+import * as actions from '../store/workout-active-actions'
+import { connect } from 'react-redux';
+
+const WorkoutDetail = (props) => {
     const params = useParams();
     const [title, setTitle] = useState('')
     const [cbpm, setCbpm] = useState()
@@ -34,6 +37,19 @@ export default function WorkoutDetail() {
 
 
     }
+    const startWorkout = () => {
+
+        const worktoutActive = {
+            "gymUser": {
+                "email": "test3@test.com"
+            },
+            "workout": {
+                "id": params.id
+            }
+        
+        } 
+       props.onStartWorkout(worktoutActive)
+    }
 
 
     return (
@@ -50,6 +66,22 @@ export default function WorkoutDetail() {
             <div className="input-group mb-3">
                 <Button onClick={updateWorkout} variant="primary">Update Workout</Button>
             </div>
+            <div className="input-group mb-3">
+                <Button onClick={startWorkout} variant="primary">Start Workout</Button>
+            </div>
+            {/* <div className="input-group mb-3">
+                <Button onClick={()=>props.onEndWorkout(params.id)} variant="primary">End Workout</Button>
+            </div> */}
         </>
     )
 }
+
+
+const mapDispatchToProps = (dispatch)=> {
+    return {
+      onStartWorkout: (workoutActive) => dispatch(actions.startWorkout(workoutActive)),
+      onEndWorkout: (id) => dispatch(actions.endWorkout(id))
+    }
+  }
+  
+  export default connect(null, mapDispatchToProps)(WorkoutDetail)

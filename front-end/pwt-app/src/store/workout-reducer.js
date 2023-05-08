@@ -6,7 +6,7 @@ const initialState = {
     ]
   }
 
-const reducer = (state = initialState, action)=> {
+const workoutActiverReducer = (state = initialState, action)=> {
     switch (action.type) {
         case actions.ADD_WORKOUT:
             //  state.workouts.push(action.payload)
@@ -22,4 +22,4 @@ const reducer = (state = initialState, action)=> {
     }
   }
 
-  export default reducer;
+  export default workoutActiverReducer;

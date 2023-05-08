@@ -16,11 +16,13 @@ import {
 import ViewWorkouts from './components/ViewWorkouts';
 import AddWorkout from './components/AddWorkout';
 import WorkoutDetail from './components/WorkoutDetail';
-import reducer from './store/workout-reducer'
-import { applyMiddleware, createStore } from 'redux';
+import workoutReducer from './store/workout-reducer'
+import workoutActiverReducer from './store/workout-active-reducer'
+import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import ViewActiveWorkouts from './components/ViewActiveWorkouts';
 
 const router = createBrowserRouter([
   {
@@ -38,7 +40,12 @@ const router = createBrowserRouter([
       {
         path: "edit/:id",
         element: <WorkoutDetail/>,
+      },
+      {
+        path: "/view",
+        element:<ViewActiveWorkouts/>,
       }
+      
     ]
   }
   ]);
@@ -52,7 +59,7 @@ const router = createBrowserRouter([
   }
   
   // create store (all the state)
-  const store = createStore(reducer, composeWithDevTools(applyMiddleware(logger,thunk)))
+  const store = createStore(combineReducers({workoutReducer,  workoutActiverReducer}), composeWithDevTools(applyMiddleware(logger,thunk)))
   
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -18,6 +18,9 @@ export default function Header() {
         <li className="nav-item">
             <Link className="nav-link active" to="/add">Add Workout</Link>
         </li>
+        <li className="nav-item">
+            <Link className="nav-link active" to="/view">View Active Workouts</Link>
+        </li>
        
       </ul>
     </div>

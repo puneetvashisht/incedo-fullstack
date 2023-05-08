@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import com.workout.personalworkouttracker.entities.WorkoutActiveRepository;
 import com.workout.personalworkouttracker.entities.WorkoutRepository;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/workoutactive")
 public class WorkoutActiveController {
 	
@@ -51,6 +53,7 @@ public class WorkoutActiveController {
 	public void endWorkout(@PathVariable("id") int id){
 		// If workout already exists, use the same
 				Optional<WorkoutActive> workoutActiveFound = workoutActiveRepository.findById(id);
+//		WorkoutActive workoutActiveFound = workoutActiveRepository.findByWorkoutId(id);
 				
 				if(workoutActiveFound.isPresent()) {
 					WorkoutActive workoutActive = workoutActiveFound.get();
